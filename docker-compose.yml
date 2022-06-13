@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - 5430:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: test
+    volumes:
+      - db_vol:/var/lib/postgresql/data
+      - ./postgres/init_scripts/:/docker-entrypoint-initdb.d/
+
+  anaconda:
+    image: continuumio/anaconda3:latest
+    volumes:
+      - ./notebooks/:/opt/notebooks/
+      - ./scripts/:/opt/scripts/
+      - ./anaconda/:/opt/prepare/
+    ports:
+      - 30888:30888
+    links:
+      - db
+    depends_on:
+      - db
+    command: /bin/sh -c "/opt/prepare/entrypoint.sh"
+volumes:
+  db_vol:
