@@ -5,11 +5,12 @@ services:
     ports:
       - 5430:5432
     environment:
+      POSTGRES_USER: postgres                       
       POSTGRES_PASSWORD: password
       POSTGRES_DB: test
     volumes:
-      - db_vol:/var/lib/postgresql/data
-      - ./postgres/init_scripts/:/docker-entrypoint-initdb.d/
+      - db_vol_dwh:/var/lib/postgresql/data
+      - ./init_scripts/:/docker-entrypoint-initdb.d/
 
 volumes:
-  db_vol:
+  db_vol_dwh:

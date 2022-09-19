@@ -1,17 +1,28 @@
-# Запуск
+# workshop_sql_optimization
+ Оптимизация SQL
 
-docker-compose up
+## Запуск
+- Из терминала перейдите в папку  
+./postgres  
+  
+- Выполните команду  
+docker-compose up  
+  
+- Дождитесь следующего сообщения:  
+LOG:  database system is ready to accept connections  
+  
 
-## Открываем python notebook
-Проходим по ссылке из логов анаконды
-К БД подключаться на порту 5430 (сделано чтобы исключить падение в случае наличия уже поднятой БД)
+- Зайтите в DBeaver, подключитесь к БД со следующими реквизитами:  
+Хост: localhost  
+Порт: 5430  
+База данных: test  
+Пользователь: postgres  
+Пароль: password  
+  
+- Проверьте, что данные в базу dev_stg загрузились успешно (должно быть 186):  
+select count(*) from block11
 
-# Остановка
-В другом окне в этой же директории выполнить команду:
-docker-compose down
-
-# Удалить данные БД
-docker volume rm workshop_sql_optimization_db_vol
-
- 
-
+## Для завершения работы 
+- В новом окне терминала перейти в папку ./postgres
+- Выполнить следующую команду из нового терминала:  
+docker-compose down --remove-orphans --volumes  
