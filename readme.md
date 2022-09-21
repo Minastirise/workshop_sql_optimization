@@ -19,7 +19,7 @@ LOG:  database system is ready to accept connections
 Пользователь: postgres  
 Пароль: password  
   
-- Проверьте, что данные в базу dev_stg загрузились успешно (должно быть 186):  
+- Проверьте, что данные в базу dev_stg загрузились успешно (должно быть 10 000 000):  
 select count(*) from block11
 
 ## Для завершения работы 
