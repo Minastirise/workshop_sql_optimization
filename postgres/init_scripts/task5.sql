@@ -5,7 +5,7 @@
 create table block51 (event_id int, user_id int, user_name varchar, category int, type varchar);
 
 INSERT INTO block51
-	SELECT generate_series(1,10000000),
+	SELECT generate_series(1,1000000),
     	floor(random() * 100000 + 1)::int,
 		concat('user ',floor(random() * 100000 + 1)),
     	floor(random() * 1000 + 1)::int,
